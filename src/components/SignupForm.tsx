@@ -1,15 +1,3 @@
-import { useState } from 'react';
-import { Loader2, CheckCircle2, Shield } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
-
-interface SignupFormProps {
-  onClose: () => void;
-}
 
 const tools = [
   'CRM (Salesforce, HubSpot, etc.)',
