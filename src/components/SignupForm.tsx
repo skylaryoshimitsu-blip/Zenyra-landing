@@ -41,6 +41,34 @@ export function SignupForm({ onClose }: SignupFormProps) {
     }));
   };
 
+const verifyNPI = async () => {
+  if (!formData.npiNumber || formData.npiNumber.length !== 10) {
+    setNpiError('NPI must be exactly 10 digits.');
+    return;
+  }
+  setNpiLoading(true);
+  setNpiError('');
+  try {
+    const res = await fetch(
+      `https://npiregistry.cms.hhs.gov/api/?number=${formData.npiNumber}&enumeration_type=NPI-1&version=2.1`
+    );
+    const data = await res.json();
+    if (data.result_count === 0) {
+      setNpiError('NPI not found. Please check the number and try again.');
+      setFormData(prev => ({ ...prev, npiVerified: false, npiName: '' }));
+    } else {
+      const result = data.results[0];
+      const name = `${result.basic.first_name} ${result.basic.last_name}`;
+      setFormData(prev => ({ ...prev, npiVerified: true, npiName: name }));
+      setNpiError('');
+    }
+  } catch (err) {
+    setNpiError('Could not verify NPI. Please try again.');
+  } finally {
+    setNpiLoading(false);
+  }
+};
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
