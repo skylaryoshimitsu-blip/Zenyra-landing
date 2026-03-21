@@ -20,16 +20,15 @@ export function SignupForm({ onClose }: SignupFormProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [npiLoading, setNpiLoading] = useState(false);
-  const [npiError, setNpiError] = useState('');
+  const [npnLoading, setNpnLoading] = useState(false);
+  const [npnError, setNpnError] = useState('');
 
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phoneNumber: '',
-    npiNumber: '',
-    npiVerified: false,
-    npiName: '',
+    npnNumber: '',
+    npnVerified: false,
     role: '',
     yearsExperience: '',
     monthlyEnrollments: '',
@@ -48,32 +47,22 @@ export function SignupForm({ onClose }: SignupFormProps) {
     }));
   };
 
-  const verifyNPI = async () => {
-    if (!formData.npiNumber || formData.npiNumber.length !== 10) {
-      setNpiError('NPI must be exactly 10 digits.');
+  const verifyNPN = () => {
+    const npn = formData.npnNumber.trim();
+    if (!npn || !/^\d+$/.test(npn)) {
+      setNpnError('NPN must contain numbers only.');
       return;
     }
-    setNpiLoading(true);
-    setNpiError('');
-    try {
-      const res = await fetch(
-        `https://npiregistry.cms.hhs.gov/api/?number=${formData.npiNumber}&enumeration_type=NPI-1&version=2.1`
-      );
-      const data = await res.json();
-      if (data.result_count === 0) {
-        setNpiError('NPI not found. Please check the number and try again.');
-        setFormData(prev => ({ ...prev, npiVerified: false, npiName: '' }));
-      } else {
-        const result = data.results[0];
-        const name = `${result.basic.first_name} ${result.basic.last_name}`;
-        setFormData(prev => ({ ...prev, npiVerified: true, npiName: name }));
-        setNpiError('');
-      }
-    } catch (err) {
-      setNpiError('Could not verify NPI. Please try again.');
-    } finally {
-      setNpiLoading(false);
+    if (npn.length < 6 || npn.length > 9) {
+      setNpnError('NPN must be between 6 and 9 digits.');
+      return;
     }
+    setNpnLoading(true);
+    setTimeout(() => {
+      setFormData(prev => ({ ...prev, npnVerified: true }));
+      setNpnError('');
+      setNpnLoading(false);
+    }, 500);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -81,8 +70,8 @@ export function SignupForm({ onClose }: SignupFormProps) {
     setLoading(true);
     setError('');
 
-    if (!formData.npiVerified) {
-      setError('Please verify your NPI number before submitting.');
+    if (!formData.npnVerified) {
+      setError('Please validate your NPN number before submitting.');
       setLoading(false);
       return;
     }
@@ -95,9 +84,9 @@ export function SignupForm({ onClose }: SignupFormProps) {
             full_name: formData.fullName,
             email: formData.email,
             phone_number: formData.phoneNumber || null,
-            npi_number: formData.npiNumber,
-            npi_verified: formData.npiVerified,
-            npi_name: formData.npiName,
+            npi_number: formData.npnNumber,
+            npi_verified: formData.npnVerified,
+            npi_name: null,
             role: formData.role,
             years_experience: formData.yearsExperience,
             monthly_enrollments: parseInt(formData.monthlyEnrollments) || 0,
@@ -197,40 +186,42 @@ export function SignupForm({ onClose }: SignupFormProps) {
             />
           </div>
 
-          {/* NPI Number */}
+          {/* NPN Number */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">NPI Number *</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              NPN — National Producer Number *
+            </label>
             <div className="flex gap-2">
               <input
                 type="text"
                 required
-                maxLength={10}
-                value={formData.npiNumber}
+                maxLength={9}
+                value={formData.npnNumber}
                 onChange={e => {
                   const val = e.target.value.replace(/\D/g, '');
-                  setFormData({ ...formData, npiNumber: val, npiVerified: false, npiName: '' });
-                  setNpiError('');
+                  setFormData({ ...formData, npnNumber: val, npnVerified: false });
+                  setNpnError('');
                 }}
                 className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="10-digit NPI number"
+                placeholder="6–9 digit NPN"
               />
               <button
                 type="button"
-                onClick={verifyNPI}
-                disabled={npiLoading || formData.npiNumber.length !== 10}
+                onClick={verifyNPN}
+                disabled={npnLoading || formData.npnNumber.length < 6}
                 className="px-4 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
               >
-                {npiLoading ? 'Checking...' : 'Verify NPI'}
+                {npnLoading ? 'Checking...' : 'Validate NPN'}
               </button>
             </div>
-            {formData.npiVerified && (
+            {formData.npnVerified && (
               <div className="mt-2 flex items-center space-x-2 text-green-600 text-sm font-medium">
                 <CheckCircle2 className="h-4 w-4" />
-                <span>Verified: {formData.npiName}</span>
+                <span>NPN format validated ✓</span>
               </div>
             )}
-            {npiError && (
-              <p className="mt-2 text-sm text-red-600">{npiError}</p>
+            {npnError && (
+              <p className="mt-2 text-sm text-red-600">{npnError}</p>
             )}
           </div>
 
