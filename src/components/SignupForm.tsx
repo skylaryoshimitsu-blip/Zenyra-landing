@@ -13,6 +13,8 @@ export function SignupForm({ onClose }: SignupFormProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [npiLoading, setNpiLoading] = useState(false);
+  const [npiError, setNpiError] = useState('');
 
   const [formData, setFormData] = useState({
     fullName: '',
