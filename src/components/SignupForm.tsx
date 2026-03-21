@@ -1,3 +1,10 @@
+import React, { useState } from 'react';
+import { CheckCircle2, Shield, Loader2 } from 'lucide-react';
+import { supabase } from '../supabaseClient';
+
+interface SignupFormProps {
+  onClose: () => void;
+}
 
 const tools = [
   'CRM (Salesforce, HubSpot, etc.)',
@@ -41,45 +48,45 @@ export function SignupForm({ onClose }: SignupFormProps) {
     }));
   };
 
-const verifyNPI = async () => {
-  if (!formData.npiNumber || formData.npiNumber.length !== 10) {
-    setNpiError('NPI must be exactly 10 digits.');
-    return;
-  }
-  setNpiLoading(true);
-  setNpiError('');
-  try {
-    const res = await fetch(
-      `https://npiregistry.cms.hhs.gov/api/?number=${formData.npiNumber}&enumeration_type=NPI-1&version=2.1`
-    );
-    const data = await res.json();
-    if (data.result_count === 0) {
-      setNpiError('NPI not found. Please check the number and try again.');
-      setFormData(prev => ({ ...prev, npiVerified: false, npiName: '' }));
-    } else {
-      const result = data.results[0];
-      const name = `${result.basic.first_name} ${result.basic.last_name}`;
-      setFormData(prev => ({ ...prev, npiVerified: true, npiName: name }));
-      setNpiError('');
+  const verifyNPI = async () => {
+    if (!formData.npiNumber || formData.npiNumber.length !== 10) {
+      setNpiError('NPI must be exactly 10 digits.');
+      return;
     }
-  } catch (err) {
-    setNpiError('Could not verify NPI. Please try again.');
-  } finally {
-    setNpiLoading(false);
-  }
-};
-  
+    setNpiLoading(true);
+    setNpiError('');
+    try {
+      const res = await fetch(
+        `https://npiregistry.cms.hhs.gov/api/?number=${formData.npiNumber}&enumeration_type=NPI-1&version=2.1`
+      );
+      const data = await res.json();
+      if (data.result_count === 0) {
+        setNpiError('NPI not found. Please check the number and try again.');
+        setFormData(prev => ({ ...prev, npiVerified: false, npiName: '' }));
+      } else {
+        const result = data.results[0];
+        const name = `${result.basic.first_name} ${result.basic.last_name}`;
+        setFormData(prev => ({ ...prev, npiVerified: true, npiName: name }));
+        setNpiError('');
+      }
+    } catch (err) {
+      setNpiError('Could not verify NPI. Please try again.');
+    } finally {
+      setNpiLoading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-if (!formData.npiVerified) {
-  setError('Please verify your NPI number before submitting.');
-  setLoading(false);
-  return;
-}
-    
+    if (!formData.npiVerified) {
+      setError('Please verify your NPI number before submitting.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const { error: insertError } = await supabase
         .from('beta_signups')
@@ -145,20 +152,17 @@ if (!formData.npiVerified) {
             <h3 className="text-3xl font-bold text-gray-900">Request Beta Access</h3>
             <p className="text-gray-600 mt-1">Limited spots available</p>
           </div>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-2xl"
-          >
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-2xl">
             ×
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+
+          {/* Full Name + Email */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Full Name *
-              </label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
               <input
                 type="text"
                 required
@@ -168,11 +172,8 @@ if (!formData.npiVerified) {
                 placeholder="John Doe"
               />
             </div>
-
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Email Address *
-              </label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
               <input
                 type="email"
                 required
@@ -184,53 +185,9 @@ if (!formData.npiVerified) {
             </div>
           </div>
 
+          {/* Phone Number */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Phone Number (Optional)
-
-<div>
-  <label className="block text-sm font-semibold text-gray-700 mb-2">
-    NPI Number *
-  </label>
-  <div className="flex gap-2">
-    <input
-      type="text"
-      required
-      maxLength={10}
-      value={formData.npiNumber}
-      onChange={e => {
-        const val = e.target.value.replace(/\D/g, '');
-        setFormData({ ...formData, npiNumber: val, npiVerified: false, npiName: '' });
-        setNpiError('');
-      }}
-      className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-      placeholder="10-digit NPI number"
-    />
-    <button
-      type="button"
-      onClick={verifyNPI}
-      disabled={npiLoading || formData.npiNumber.length !== 10}
-      className="px-4 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-    >
-      {npiLoading ? 'Checking...' : 'Verify NPI'}
-    </button>
-  </div>
-
-  {/* Verified state */}
-  {formData.npiVerified && (
-    <div className="mt-2 flex items-center space-x-2 text-green-600 text-sm font-medium">
-      <CheckCircle2 className="h-4 w-4" />
-      <span>Verified: {formData.npiName}</span>
-    </div>
-  )}
-
-  {/* Error state */}
-  {npiError && (
-    <p className="mt-2 text-sm text-red-600">{npiError}</p>
-  )}
-</div>
-              
-            </label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number (Optional)</label>
             <input
               type="tel"
               value={formData.phoneNumber}
@@ -240,11 +197,47 @@ if (!formData.npiVerified) {
             />
           </div>
 
+          {/* NPI Number */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">NPI Number *</label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                required
+                maxLength={10}
+                value={formData.npiNumber}
+                onChange={e => {
+                  const val = e.target.value.replace(/\D/g, '');
+                  setFormData({ ...formData, npiNumber: val, npiVerified: false, npiName: '' });
+                  setNpiError('');
+                }}
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="10-digit NPI number"
+              />
+              <button
+                type="button"
+                onClick={verifyNPI}
+                disabled={npiLoading || formData.npiNumber.length !== 10}
+                className="px-4 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+              >
+                {npiLoading ? 'Checking...' : 'Verify NPI'}
+              </button>
+            </div>
+            {formData.npiVerified && (
+              <div className="mt-2 flex items-center space-x-2 text-green-600 text-sm font-medium">
+                <CheckCircle2 className="h-4 w-4" />
+                <span>Verified: {formData.npiName}</span>
+              </div>
+            )}
+            {npiError && (
+              <p className="mt-2 text-sm text-red-600">{npiError}</p>
+            )}
+          </div>
+
+          {/* Role + Experience */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Role *
-              </label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Role *</label>
               <select
                 required
                 value={formData.role}
@@ -259,11 +252,8 @@ if (!formData.npiVerified) {
                 <option value="other">Other</option>
               </select>
             </div>
-
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Years of Experience *
-              </label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Years of Experience *</label>
               <select
                 required
                 value={formData.yearsExperience}
@@ -278,11 +268,10 @@ if (!formData.npiVerified) {
             </div>
           </div>
 
+          {/* Monthly Enrollments + Agency Size */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Monthly Enrollments *
-              </label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Enrollments *</label>
               <input
                 type="number"
                 required
@@ -293,11 +282,8 @@ if (!formData.npiVerified) {
                 placeholder="0"
               />
             </div>
-
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Agency Size (# of agents) *
-              </label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Agency Size (# of agents) *</label>
               <input
                 type="number"
                 required
@@ -310,16 +296,14 @@ if (!formData.npiVerified) {
             </div>
           </div>
 
+          {/* Current Tools */}
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Current Tools (select all that apply)
             </label>
             <div className="grid grid-cols-2 gap-3">
               {tools.map(tool => (
-                <label
-                  key={tool}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
+                <label key={tool} className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={formData.currentTools.includes(tool)}
@@ -332,10 +316,9 @@ if (!formData.npiVerified) {
             </div>
           </div>
 
+          {/* Pain Points */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Biggest Pain Points *
-            </label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Biggest Pain Points *</label>
             <textarea
               required
               rows={4}
@@ -346,16 +329,12 @@ if (!formData.npiVerified) {
             />
           </div>
 
+          {/* Interest Level */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Interest Level *
-            </label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Interest Level *</label>
             <div className="flex gap-4">
               {['Low', 'Medium', 'High'].map(level => (
-                <label
-                  key={level}
-                  className="flex-1 cursor-pointer"
-                >
+                <label key={level} className="flex-1 cursor-pointer">
                   <input
                     type="radio"
                     name="interestLevel"
@@ -377,17 +356,20 @@ if (!formData.npiVerified) {
             </div>
           </div>
 
+          {/* Error */}
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl">
               {error}
             </div>
           )}
 
+          {/* Privacy note */}
           <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-4 rounded-xl">
             <Shield className="w-5 h-5 text-blue-600 flex-shrink-0" />
             <span>We never sell your data. Your information is kept strictly confidential.</span>
           </div>
 
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
