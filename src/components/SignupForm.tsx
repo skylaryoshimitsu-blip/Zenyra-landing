@@ -98,13 +98,13 @@ export function SignupForm({ onClose }: SignupFormProps) {
         ]);
 
       if (insertError) {
-        if (insertError.code === '23505') {
-          setError('This email is already registered. Please use a different email.');
-        } else {
-          setError('Something went wrong. Please try again.');
-        }
-        setLoading(false);
-        return;
+       if (insertError.code === '23505') {
+       setError('This email is already registered. Please use a different email.');
+       } else {
+       setError(`Error: ${insertError.message} (code: ${insertError.code})`);
+       }
+       setLoading(false);
+       return;
       }
 
       setSuccess(true);
