@@ -74,6 +74,12 @@ const verifyNPI = async () => {
     setLoading(true);
     setError('');
 
+if (!formData.npiVerified) {
+  setError('Please verify your NPI number before submitting.');
+  setLoading(false);
+  return;
+}
+    
     try {
       const { error: insertError } = await supabase
         .from('beta_signups')
