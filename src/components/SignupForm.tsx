@@ -187,6 +187,49 @@ if (!formData.npiVerified) {
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Phone Number (Optional)
+
+<div>
+  <label className="block text-sm font-semibold text-gray-700 mb-2">
+    NPI Number *
+  </label>
+  <div className="flex gap-2">
+    <input
+      type="text"
+      required
+      maxLength={10}
+      value={formData.npiNumber}
+      onChange={e => {
+        const val = e.target.value.replace(/\D/g, '');
+        setFormData({ ...formData, npiNumber: val, npiVerified: false, npiName: '' });
+        setNpiError('');
+      }}
+      className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      placeholder="10-digit NPI number"
+    />
+    <button
+      type="button"
+      onClick={verifyNPI}
+      disabled={npiLoading || formData.npiNumber.length !== 10}
+      className="px-4 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+    >
+      {npiLoading ? 'Checking...' : 'Verify NPI'}
+    </button>
+  </div>
+
+  {/* Verified state */}
+  {formData.npiVerified && (
+    <div className="mt-2 flex items-center space-x-2 text-green-600 text-sm font-medium">
+      <CheckCircle2 className="h-4 w-4" />
+      <span>Verified: {formData.npiName}</span>
+    </div>
+  )}
+
+  {/* Error state */}
+  {npiError && (
+    <p className="mt-2 text-sm text-red-600">{npiError}</p>
+  )}
+</div>
+              
             </label>
             <input
               type="tel"
