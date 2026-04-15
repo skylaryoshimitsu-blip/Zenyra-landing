@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { Linkedin, Twitter, Facebook } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,8 +12,8 @@ export function Footer() {
               <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Zenyra
               </h3>
-              <p className="text-gray-400 leading-relaxed mb-6 max-w-xl">
-                Zenyra helps Medicare agencies see where revenue is leaking inside the sales process so managers can improve conversion efficiency, protect agent sell time, and coach with better visibility.
+              <p className="text-gray-400 leading-relaxed mb-6">
+                Transforming Medicare enrollments for the modern agent. Built by agents, for agents.
               </p>
               <div className="flex gap-4">
                 <a
@@ -50,17 +50,17 @@ export function Footer() {
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    Beta Overview
+                    Features
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    FAQ
+                    Beta Program
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    Request Access
+                    Pricing
                   </a>
                 </li>
               </ul>
@@ -71,7 +71,7 @@ export function Footer() {
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    About Zenyra
+                    About Us
                   </a>
                 </li>
                 <li>
@@ -97,12 +97,6 @@ export function Footer() {
             <p className="text-gray-400 text-sm">
               {currentYear} Zenyra. All rights reserved.
             </p>
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <Mail className="w-4 h-4" />
-              <a href="mailto:hello@zenyra.com" className="hover:text-white transition-colors">
-                hello@zenyra.com
-              </a>
-            </div>
           </div>
         </div>
       </div>
