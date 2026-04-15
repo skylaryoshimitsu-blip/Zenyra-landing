@@ -48,7 +48,7 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
 
   return (
     <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-700 text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGRkIj48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjxwYXRoIGQ9Ik0zNiAxNGMwLTEuMS0uOS0yLTItMmgtMmMtMS4xIDAtMiAuOS0yIDJ2MmMwIDEuMS45IDIgMiAyaDJjMS4xIDAgMi0uOSAyLTJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzAtMS4xLS45LTItMi0yaC0yYy0xLjEgMC0yIC45LTIgMnYyYzAgMS4xLjkgMiAyIDJoMmMxLjEgMCAyLS45IDItMnYtMnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -58,10 +58,10 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
               <span>Limited Beta Program</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Join the Zenyra Beta
+              Join the Beta Before More Revenue Leakage Gets Written Off as “Normal”
             </h2>
-            <p className="text-xl text-blue-100 max-w-4xl mx-auto">
-              We are looking for Medicare agencies that want clearer visibility into workflow drag, qualification failure, and missed coaching leverage—not just another generic tool trial.
+            <p className="text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
+              Zenyra is opening beta access to Medicare agencies, FMOs, and sales teams that want clearer visibility into qualification breakdowns, workflow drag, coaching gaps, and preventable conversion loss.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">{user.title}</h4>
-                        <p className="text-blue-100 text-sm leading-relaxed">{user.description}</p>
+                        <p className="text-blue-100 text-sm">{user.description}</p>
                       </div>
                     </div>
                   </div>
@@ -102,7 +102,7 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">{expectation.title}</h4>
-                        <p className="text-blue-100 text-sm leading-relaxed">{expectation.description}</p>
+                        <p className="text-blue-100 text-sm">{expectation.description}</p>
                       </div>
                     </div>
                   </div>
@@ -117,9 +117,9 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
               className="bg-white text-blue-600 px-10 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 inline-flex items-center gap-2"
             >
               <Star className="w-5 h-5" />
-              Request Beta Access Now
+              Apply for Beta Access
             </button>
-            <p className="text-blue-100 mt-4 text-sm">Limited spots available • No credit card required</p>
+            <p className="text-blue-100 mt-4 text-sm">Early access • Direct product feedback • No credit card required</p>
           </div>
         </div>
       </div>
