@@ -12,8 +12,8 @@ export function Footer() {
               <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Zenyra
               </h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                Transforming Medicare enrollments for the modern agent. Built by agents, for agents.
+              <p className="text-gray-400 leading-relaxed mb-6 max-w-xl">
+                Zenyra helps Medicare agencies see where revenue is leaking inside the sales process so managers can improve conversion efficiency, protect agent sell time, and coach with better visibility.
               </p>
               <div className="flex gap-4">
                 <a
@@ -50,17 +50,17 @@ export function Footer() {
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    Features
+                    Beta Overview
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    Beta Program
+                    FAQ
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    Pricing
+                    Request Access
                   </a>
                 </li>
               </ul>
@@ -71,7 +71,7 @@ export function Footer() {
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    About Us
+                    About Zenyra
                   </a>
                 </li>
                 <li>
