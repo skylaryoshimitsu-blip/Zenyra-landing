@@ -8,60 +8,60 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
   const targetUsers = [
     {
       icon: Users,
-      title: 'Independent Agents',
-      description: 'Solo practitioners looking to maximize productivity and efficiency'
+      title: 'Agency owners and operators',
+      description: 'Leaders who want clearer visibility into where revenue is leaking and where management intervention can improve output.'
     },
     {
       icon: Users,
-      title: 'Small Agencies',
-      description: 'Teams of 2-10 agents seeking better coordination and lead management'
+      title: 'Small to midsize Medicare teams',
+      description: 'Teams that need a cleaner operating view across handoffs, qualification, performance inconsistency, and workflow drag.'
     },
     {
       icon: Users,
-      title: 'High-Volume Call Centers',
-      description: 'Operations handling hundreds of enrollments monthly'
+      title: 'Call centers with active lead volume',
+      description: 'High-activity environments where hidden process loss compounds fast and manager visibility matters even more.'
     },
     {
       icon: Users,
-      title: 'All Experience Levels',
-      description: 'From new agents to seasoned Medicare professionals'
+      title: 'Teams willing to pressure-test the workflow',
+      description: 'Operators who want to compare what they think is happening on calls versus what the process data actually shows.'
     }
   ];
 
   const expectations = [
     {
       icon: Star,
-      title: 'Early Access',
-      description: 'Be among the first to use cutting-edge features designed for Medicare agents'
+      title: 'Early access to the operating model',
+      description: 'Get in early while the beta is focused on workflow visibility, qualification breakdowns, and call-process insight.'
     },
     {
       icon: MessageSquare,
-      title: 'Direct Feedback Channel',
-      description: 'Share your insights and help us build the perfect tool for your needs'
+      title: 'Direct product feedback loop',
+      description: 'Help shape what matters most for agency management, coaching visibility, and day-to-day production control.'
     },
     {
       icon: Lightbulb,
-      title: 'Shape the Future',
-      description: 'Influence our product roadmap and feature development priorities'
+      title: 'A chance to validate the ROI story',
+      description: 'Use your own workflow and lead flow to test whether better visibility can expose preventable loss inside your operation.'
     }
   ];
 
   return (
     <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-700 text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzAtMS4xLS45LTItMi0yaC0yYy0xLjEgMC0yIC45LTIgMnYyYzAgMS4xLjkgMiAyIDJoMmMxLjEgMCAyLS45IDItMnYtMnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGRkIj48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjxwYXRoIGQ9Ik0zNiAxNGMwLTEuMS0uOS0yLTItMmgtMmMtMS4xIDAtMiAuOS0yIDJ2MmMwIDEuMS45IDIgMiAyaDJjMS4xIDAgMi0uOSAyLTJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Star className="w-4 h-4" />
-              <span>Exclusive Beta Program</span>
+              <span>Limited Beta Program</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Join the Zenyra Beta
             </h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Help us build the future of Medicare enrollment technology
+            <p className="text-xl text-blue-100 max-w-4xl mx-auto">
+              We are looking for Medicare agencies that want clearer visibility into workflow drag, qualification failure, and missed coaching leverage—not just another generic tool trial.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">{user.title}</h4>
-                        <p className="text-blue-100 text-sm">{user.description}</p>
+                        <p className="text-blue-100 text-sm leading-relaxed">{user.description}</p>
                       </div>
                     </div>
                   </div>
@@ -102,7 +102,7 @@ export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">{expectation.title}</h4>
-                        <p className="text-blue-100 text-sm">{expectation.description}</p>
+                        <p className="text-blue-100 text-sm leading-relaxed">{expectation.description}</p>
                       </div>
                     </div>
                   </div>
