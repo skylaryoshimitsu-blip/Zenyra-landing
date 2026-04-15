@@ -1,128 +1,91 @@
-import { Users, MessageSquare, Lightbulb, Star } from 'lucide-react';
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
-interface BetaProgramProps {
-  onJoinBeta: () => void;
-}
+function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-export function BetaProgram({ onJoinBeta }: BetaProgramProps) {
-  const targetUsers = [
+  const faqs = [
     {
-      icon: Users,
-      title: 'Agency owners and operators',
-      description: 'Leaders who want clearer visibility into where revenue is leaking and where management intervention can improve output.'
+      question: 'What is Zenyra focused on in beta?',
+      answer:
+        'Zenyra is focused on helping Medicare agencies see where revenue is leaking inside the sales process. In beta, the emphasis is workflow visibility, qualification breakdowns, handoff friction, and clearer coaching insight—not inflated promises about everything at once.'
     },
     {
-      icon: Users,
-      title: 'Small to midsize Medicare teams',
-      description: 'Teams that need a cleaner operating view across handoffs, qualification, performance inconsistency, and workflow drag.'
+      question: 'Who is the beta for?',
+      answer:
+        'The beta is best suited for Medicare agency owners, operators, sales leaders, and active teams that want a clearer view into workflow drag, lead-quality issues, and performance inconsistency. It is especially relevant for teams that want to pressure-test what is actually happening inside calls and handoffs.'
     },
     {
-      icon: Users,
-      title: 'Call centers with active lead volume',
-      description: 'High-activity environments where hidden process loss compounds fast and manager visibility matters even more.'
+      question: 'What do I need to join?',
+      answer:
+        'You only need to submit the beta form with your role, agency details, current workflow, and pain points. That helps prioritize the teams that are the strongest fit for the current beta stage. No credit card is required.'
     },
     {
-      icon: Users,
-      title: 'Teams willing to pressure-test the workflow',
-      description: 'Operators who want to compare what they think is happening on calls versus what the process data actually shows.'
-    }
-  ];
-
-  const expectations = [
-    {
-      icon: Star,
-      title: 'Early access to the operating model',
-      description: 'Get in early while the beta is focused on workflow visibility, qualification breakdowns, and call-process insight.'
+      question: 'Is Zenyra already proven to increase close rate?',
+      answer:
+        'Not yet. The current data is strong enough to show where preventable process loss is happening, but beta is where agencies help validate what improves once that visibility is introduced into real workflows.'
     },
     {
-      icon: MessageSquare,
-      title: 'Direct product feedback loop',
-      description: 'Help shape what matters most for agency management, coaching visibility, and day-to-day production control.'
+      question: 'Will Zenyra replace the tools we already use?',
+      answer:
+        'The goal is not to force agencies to rip out their existing stack. The beta is designed to help clarify where workflow breakdowns, qualification failures, and management blind spots exist so agencies can decide how Zenyra should fit into the tools and process they already rely on.'
     },
     {
-      icon: Lightbulb,
-      title: 'A chance to validate the ROI story',
-      description: 'Use your own workflow and lead flow to test whether better visibility can expose preventable loss inside your operation.'
+      question: 'Is my information secure?',
+      answer:
+        'Yes. Information submitted through the beta process is handled with security and privacy in mind. It is used to evaluate fit, prioritize product direction, and support beta onboarding—not sold to third parties.'
     }
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-700 text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGRkIj48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjxwYXRoIGQ9Ik0zNiAxNGMwLTEuMS0uOS0yLTItMmgtMmMtMS4xIDAtMiAuOS0yIDJ2MmMwIDEuMS45IDIgMiAyaDJjMS4xIDAgMi0uOSAyLTJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
+    <section className="py-24 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Star className="w-4 h-4" />
-              <span>Limited Beta Program</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Join the Zenyra Beta
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
             </h2>
-            <p className="text-xl text-blue-100 max-w-4xl mx-auto">
-              We are looking for Medicare agencies that want clearer visibility into workflow drag, qualification failure, and missed coaching leverage—not just another generic tool trial.
+            <p className="text-xl text-gray-600">
+              What agency owners and operators usually want to know before joining the beta
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
-            <div>
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <Users className="w-7 h-7" />
-                Who the Beta is For
-              </h3>
-              <div className="space-y-4">
-                {targetUsers.map((user, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-colors">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <user.icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold mb-1">{user.title}</h4>
-                        <p className="text-blue-100 text-sm leading-relaxed">{user.description}</p>
-                      </div>
-                    </div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                >
+                  <span className="text-lg font-semibold text-gray-900 pr-8">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    className={`w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-200 ${
+                      openIndex === index ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openIndex === index ? 'max-h-96' : 'max-h-0'
+                  }`}
+                >
+                  <div className="px-8 pb-6 text-gray-700 leading-relaxed">
+                    {faq.answer}
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <Star className="w-7 h-7" />
-                What to Expect
-              </h3>
-              <div className="space-y-4">
-                {expectations.map((expectation, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-colors">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <expectation.icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold mb-1">{expectation.title}</h4>
-                        <p className="text-blue-100 text-sm leading-relaxed">{expectation.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <button
-              onClick={onJoinBeta}
-              className="bg-white text-blue-600 px-10 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 inline-flex items-center gap-2"
-            >
-              <Star className="w-5 h-5" />
-              Request Beta Access Now
-            </button>
-            <p className="text-blue-100 mt-4 text-sm">Limited spots available • No credit card required</p>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+export { FAQ };
+export default FAQ;
