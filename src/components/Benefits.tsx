@@ -4,38 +4,38 @@ export function Benefits() {
   const benefits = [
     {
       icon: Clock,
-      title: 'Increase Efficiency',
-      description: 'Automate repetitive tasks and focus on what matters most—building relationships and closing enrollments.',
+      title: 'Protect licensed agent sell time',
+      description: 'Expose the handoff friction, verification drag, and late-stage fallout that quietly eat into productive talk time.',
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: TrendingUp,
-      title: 'Boost Lead Conversion Rates',
-      description: 'Never miss a follow-up opportunity with intelligent reminders and prioritization that keeps you on top of every lead.',
+      title: 'Improve conversion consistency',
+      description: 'See where performance is being suppressed by workflow issues, not just rep behavior, so conversion becomes more repeatable across the floor.',
       color: 'from-purple-500 to-purple-600'
     },
     {
       icon: FileCheck,
-      title: 'Reduce Administrative Work',
-      description: 'Cut down on paperwork and data entry with streamlined processes designed for Medicare enrollment workflows.',
+      title: 'Create cleaner coaching visibility',
+      description: 'Separate bad execution from bad intake, weak lead quality, and structural disqualification so coaching targets the right problem.',
       color: 'from-blue-500 to-purple-600'
     },
     {
       icon: Shield,
-      title: 'Stay Organized & Compliant',
-      description: 'Built-in compliance features ensure your workflows meet Medicare regulations without the guesswork.',
+      title: 'Reduce avoidable process loss',
+      description: 'Catch authority gaps, plan-fit blockers, and workflow breakdowns earlier instead of discovering them after the call is already deep.',
       color: 'from-purple-500 to-blue-600'
     },
     {
       icon: Zap,
-      title: 'Improve Client Follow-Up Speed',
-      description: 'Respond faster with organized information at your fingertips and automated communication workflows.',
+      title: 'Make sourcing decisions with better context',
+      description: 'Give managers clearer insight into which losses came from lead quality, which came from workflow drag, and which were truly coachable.',
       color: 'from-blue-600 to-purple-600'
     },
     {
       icon: Package,
-      title: 'All Tools in One Place',
-      description: 'Stop switching between multiple platforms. Zenyra unifies your essential tools into one powerful dashboard.',
+      title: 'Operate from one management view',
+      description: 'Bring call outcomes, risk signals, and performance patterns into one place so agencies can manage the process instead of guessing around it.',
       color: 'from-purple-600 to-blue-600'
     }
   ];
@@ -46,10 +46,10 @@ export function Benefits() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Medicare Agents Choose Zenyra
+              Why Agency Owners Are Paying Attention to Zenyra
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Built specifically for the unique challenges of Medicare enrollment
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              The value is not more noise or more dashboards. It is better visibility into where production is slowing down, where revenue is being lost, and where managers can intervene sooner.
             </p>
           </div>
 
