@@ -6,7 +6,6 @@ import { Benefits } from './components/Benefits';
 import { BetaProgram } from './components/BetaProgram';
 import { DataCollection } from './components/DataCollection';
 import { SignupForm } from './components/SignupForm';
-import { SocialProof } from './components/SocialProof';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 
@@ -31,7 +30,6 @@ function App() {
       <Benefits />
       <BetaProgram onJoinBeta={() => setShowSignupForm(true)} />
       <DataCollection />
-      <SocialProof />
       <FAQ />
       <Footer />
 
