@@ -4,26 +4,26 @@ export function HowItWorks() {
   const steps = [
     {
       icon: Plug,
-      title: 'Connect Your Lead Sources',
-      description: 'Zenyra centralizes lead information from common Medicare platforms you already use.',
+      title: 'Bring your lead flow into one view',
+      description: 'Centralize the lead sources, call outcomes, and workflow touchpoints your team is already using so managers can see the full process instead of scattered fragments.',
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: LayoutDashboard,
-      title: 'Organize & Prioritize Automatically',
-      description: 'Your dashboard sorts opportunities and tasks so you always know what needs attention next.',
+      title: 'Surface risk earlier in the call path',
+      description: 'Give your team clearer visibility into qualification gaps, handoff issues, structural blockers, and deal-risk signals before agents sink more time into the wrong opportunities.',
       color: 'from-purple-500 to-purple-600'
     },
     {
       icon: Zap,
-      title: 'Work Smarter, Not Harder',
-      description: 'Built-in tools help you communicate, document, and follow compliance-friendly workflows.',
+      title: 'Separate workflow problems from rep problems',
+      description: 'Help managers distinguish bad intake, weak lead quality, late-stage fallout, and true execution issues so coaching and process fixes become more precise.',
       color: 'from-blue-500 to-purple-600'
     },
     {
       icon: TrendingUp,
-      title: 'Track Performance & Improve',
-      description: 'See daily, weekly, and monthly insights on activity and outcomes to improve conversions.',
+      title: 'Turn visibility into better operating decisions',
+      description: 'Use cleaner insight into where calls break down to improve coaching, protect agent sell time, and create a more consistent path from lead to enrollment.',
       color: 'from-purple-500 to-blue-600'
     }
   ];
@@ -34,10 +34,10 @@ export function HowItWorks() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              How Zenyra Works
+              How Zenyra Fits Into the Agency Workflow
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Four simple steps to revolutionize your Medicare agent workflow
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              Not another generic dashboard. A clearer operating view into where production is slowing down, where revenue is leaking, and what management can actually do about it.
             </p>
           </div>
 
