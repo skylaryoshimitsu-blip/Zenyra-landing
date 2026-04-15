@@ -1,16 +1,20 @@
 import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 
 export function ProblemSolution() {
-  const problems = [
-    'Deals are making it deep into calls, then dying because authority issues, hidden decision-makers, or qualification problems were not surfaced early enough.',
-    'Interested prospects are still being lost when doctor network conflicts, plan-fit issues, or structural blockers appear after the pitch is already underway.',
-    'Bad intake, weak leads, rep execution, and structural non-convertibility get blended together, making coaching, sourcing, and forecasting less reliable.'
+  const challenges = [
+    'Deals die late because authority gaps and hidden decision-makers are discovered too far into the call.',
+    'Interested prospects still fall out when doctor network conflicts, plan-fit blockers, or structural issues surface after the pitch begins.',
+    'Agents lose selling time fixing bad intake, verification errors, and handoff friction before real discovery even starts.',
+    'Weak leads, confused callers, structural dead ends, and true sales opportunities get blended together in the same workflow.',
+    'Some enrollments look closed on paper but are still conditional, fragile, or at risk of not processing.'
   ];
 
-  const outcomes = [
-    'Surface where revenue is leaking inside the workflow instead of forcing managers to guess from close rate alone.',
-    'Separate coachable sales problems from structural disqualifications so teams stop treating every loss the same way.',
-    'Give managers cleaner visibility into qualification breakdowns, handoff drag, and late-stage fallout before they keep wasting licensed agent time.'
+  const solutions = [
+    'Surface where revenue is leaking inside the workflow instead of forcing managers to infer it from close rate alone.',
+    'Catch structural blockers and plan-fit friction earlier so agents spend more time on opportunities that can actually close.',
+    'Expose intake drag, data-quality issues, and handoff breakdowns that quietly suppress throughput and conversion efficiency.',
+    'Separate coachable rep problems from sourcing, routing, and non-convertible opportunity issues so management decisions get cleaner.',
+    'Distinguish confirmed production from at-risk production to improve follow-up discipline and forecast reliability.'
   ];
 
   return (
@@ -19,10 +23,10 @@ export function ProblemSolution() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              The Real Problem Isn’t Activity. It’s Hidden Revenue Leakage.
+              The Revenue Problem Most Medicare Agencies Can&apos;t Actually See
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Most agencies can see calls, enrollments, and basic rep output. What they usually cannot see is where the process is breaking down, where licensed agent time is being wasted, and which losses were preventable.
+              Your team may be tracking calls, enrollments, and close rate. That still does not tell you where production is breaking down. Zenyra helps agencies see where losses are happening inside the workflow so managers can act earlier, coach more precisely, and protect licensed-agent sell time before avoidable leakage compounds.
             </p>
           </div>
 
@@ -35,10 +39,10 @@ export function ProblemSolution() {
                 <h3 className="text-2xl font-bold text-gray-900">What agencies are dealing with now</h3>
               </div>
               <ul className="space-y-4">
-                {problems.map((problem, index) => (
-                  <li key={index} className="flex items-start gap-3 text-gray-700 leading-relaxed">
+                {challenges.map((challenge, index) => (
+                  <li key={index} className="flex items-start gap-3 text-gray-700">
                     <XCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                    <span>{problem}</span>
+                    <span>{challenge}</span>
                   </li>
                 ))}
               </ul>
@@ -54,10 +58,10 @@ export function ProblemSolution() {
                   <h3 className="text-2xl font-bold text-gray-900">How Zenyra helps</h3>
                 </div>
                 <ul className="space-y-4">
-                  {outcomes.map((outcome, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-700 leading-relaxed">
+                  {solutions.map((solution, index) => (
+                    <li key={index} className="flex items-start gap-3 text-gray-700">
                       <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-medium">{outcome}</span>
+                      <span className="font-medium">{solution}</span>
                     </li>
                   ))}
                 </ul>
