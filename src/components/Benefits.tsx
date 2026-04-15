@@ -1,42 +1,36 @@
-import { Clock, TrendingUp, FileCheck, Shield, Zap, Package } from 'lucide-react';
+import { Search, Clock, Target, BarChart3, Shield } from 'lucide-react';
 
 export function Benefits() {
   const benefits = [
     {
-      icon: Clock,
-      title: 'Protect licensed agent sell time',
-      description: 'Expose the handoff friction, verification drag, and late-stage fallout that quietly eat into productive talk time.',
+      icon: Search,
+      title: 'See where revenue is actually leaking',
+      description: 'Identify whether losses are coming from qualification gaps, handoff drag, structural blockers, or close execution instead of guessing from outcomes alone.',
       color: 'from-blue-500 to-blue-600'
     },
     {
-      icon: TrendingUp,
-      title: 'Improve conversion consistency',
-      description: 'See where performance is being suppressed by workflow issues, not just rep behavior, so conversion becomes more repeatable across the floor.',
+      icon: Clock,
+      title: 'Protect licensed-agent selling time',
+      description: 'Catch intake friction, verification slowdowns, and dead-end opportunities earlier so more live-call time goes toward real conversion opportunities.',
       color: 'from-purple-500 to-purple-600'
     },
     {
-      icon: FileCheck,
-      title: 'Create cleaner coaching visibility',
-      description: 'Separate bad execution from bad intake, weak lead quality, and structural disqualification so coaching targets the right problem.',
+      icon: Target,
+      title: 'Coach with cleaner performance context',
+      description: 'Separate rep execution issues from source quality, workflow design, and non-convertible opportunities so coaching targets the right problem.',
       color: 'from-blue-500 to-purple-600'
     },
     {
-      icon: Shield,
-      title: 'Reduce avoidable process loss',
-      description: 'Catch authority gaps, plan-fit blockers, and workflow breakdowns earlier instead of discovering them after the call is already deep.',
+      icon: BarChart3,
+      title: 'Improve consistency across the floor',
+      description: 'Expose why one agent or one day converts differently from another by making workflow friction and call-path variation easier to measure.',
       color: 'from-purple-500 to-blue-600'
     },
     {
-      icon: Zap,
-      title: 'Make sourcing decisions with better context',
-      description: 'Give managers clearer insight into which losses came from lead quality, which came from workflow drag, and which were truly coachable.',
+      icon: Shield,
+      title: 'Forecast with more confidence',
+      description: 'Distinguish secured production from fragile or timing-dependent enrollments so pipeline reporting and follow-up discipline become more reliable.',
       color: 'from-blue-600 to-purple-600'
-    },
-    {
-      icon: Package,
-      title: 'Operate from one management view',
-      description: 'Bring call outcomes, risk signals, and performance patterns into one place so agencies can manage the process instead of guessing around it.',
-      color: 'from-purple-600 to-blue-600'
     }
   ];
 
@@ -46,10 +40,10 @@ export function Benefits() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Agency Owners Are Paying Attention to Zenyra
+              Why Agencies Join the Zenyra Beta
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-              The value is not more noise or more dashboards. It is better visibility into where production is slowing down, where revenue is being lost, and where managers can intervene sooner.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Better process visibility. Better management decisions.
             </p>
           </div>
 
