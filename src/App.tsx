@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Hero } from './components/Hero';
 import { ProblemSolution } from './components/ProblemSolution';
 import { HowItWorks } from './components/HowItWorks';
+import { TryFree } from './components/TryFree';
 import { Benefits } from './components/Benefits';
 import { BetaProgram } from './components/BetaProgram';
 import { DataCollection } from './components/DataCollection';
@@ -27,12 +28,12 @@ function App() {
       />
       <ProblemSolution />
       <HowItWorks />
+      <TryFree />
       <Benefits />
       <BetaProgram onJoinBeta={() => setShowSignupForm(true)} />
       <DataCollection />
       <FAQ />
       <Footer />
-
       {showSignupForm && (
         <SignupForm onClose={() => setShowSignupForm(false)} />
       )}
