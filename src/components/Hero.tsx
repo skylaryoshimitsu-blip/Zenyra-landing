@@ -42,20 +42,20 @@ export function Hero({ onJoinBeta, onLearnMore }: HeroProps) {
             <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto border border-gray-200">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-1">103</div>
-                  <div className="text-sm text-gray-600">Real sales calls analyzed</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-1">6x</div>
+                  <div className="text-sm text-gray-600">Spread between top and bottom producer, two full weeks</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-1">15.5%</div>
-                  <div className="text-sm text-gray-600">Baseline close rate observed</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-1">4 of 6</div>
+                  <div className="text-sm text-gray-600">Established agents with a 30%+ swing — invisible without tracking</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-1">0–43%</div>
-                  <div className="text-sm text-gray-600">Session close-rate swing</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-1">$60,911</div>
+                  <div className="text-sm text-gray-600">Two-week team revenue, only visible in hindsight without daily tracking</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-1">60 min</div>
-                  <div className="text-sm text-gray-600">Lost call caught too late</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-1">$7,614</div>
+                  <div className="text-sm text-gray-600">Average per-agent revenue — most agents aren't near it</div>
                 </div>
               </div>
             </div>
